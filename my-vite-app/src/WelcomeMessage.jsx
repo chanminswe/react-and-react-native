@@ -1,6 +1,7 @@
 import React from "react";
 
 function WelcomeMessage() {
+  //jsx javascript xml
   return (
     <div>
       <section>

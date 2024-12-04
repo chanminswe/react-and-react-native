@@ -1,0 +1,28 @@
+
+ExampleComponent.jsx
+
+--this is component 
+function ExampleComponent(){
+    return(
+        <div>
+        something
+        </div>
+    )
+}
+
+export ExampleComponent;
+
+
+AnotherComponent.jsx
+---import
+import ExampleComponent from './ExampleComponent';
+
+function AnotherComponent(){
+    return(
+        <div>
+            <ExampleComponent />
+            <p>Another component</p>
+        </div>
+    )
+}
+
