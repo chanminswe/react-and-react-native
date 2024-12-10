@@ -1,33 +1,33 @@
-import "./App.css";
-import WelcomeMessage from "./WelcomeMessage";
-import ClickButton from "./ClickButton";
-import { SayHello, SayGoodbye } from "./ClickButton";
+import React, { useState } from "react";
+import MyComponent from "./react-class/ch-3/inclass/MyComponent";
 
-function LoggedIn() {
-  return (
-    <div>
-      <h3>The user has logged in </h3>
-    </div>
-  );
-}
+function ToDoList() {
+  const [todo, setToDo] = useState([]);
+  const [newTd, setNewTd] = useState("");
 
-function LoggedOut() {
+
+  //array or object
+  function addList() {
+    setToDo((prevState) => [...prevState, newTd]);
+  }
+
   return (
-    <div>
-      <h3>The user has not logged in </h3>
-    </div>
+    <>
+      <input onChange={(event) => setNewTd(event.target.value)} />
+      <button onClick={addList}>Add</button>
+      {todo.map((i) => (
+        <p key={i}>{i}</p>
+      ))}
+    </>
   );
 }
 
 function App() {
-  const login = true;
-
-          //if login ? true : false 
-  return <div>{login ? <LoggedIn /> : <LoggedOut />}</div>;
-
-
-  //  false and true 
-  //login && <LoggedIn />
+  return (
+    <>
+      <ToDoList />
+    </>
+  );
 }
 
 export default App;

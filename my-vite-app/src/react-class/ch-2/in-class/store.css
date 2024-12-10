@@ -1,0 +1,42 @@
+.store-section{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    width: 100%;
+    height: auto;
+}
+
+.store-api{
+    width: 70%;
+    padding: 20px;
+    height:  auto;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width : 500px) {
+    .store-section{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+    
+        width: 100%;
+        height: auto;
+    }
+    
+    .store-api{
+        padding: 20px;
+
+        width: 20%;
+        height:  auto;
+    }
+    
+}
+
+
