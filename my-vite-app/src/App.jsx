@@ -1,31 +1,12 @@
-import React, { useState } from "react";
-import MyComponent from "./react-class/ch-3/inclass/MyComponent";
+import React from "react";
 
-function ToDoList() {
-  const [todo, setToDo] = useState([]);
-  const [newTd, setNewTd] = useState("");
-
-
-  //array or object
-  function addList() {
-    setToDo((prevState) => [...prevState, newTd]);
-  }
-
-  return (
-    <>
-      <input onChange={(event) => setNewTd(event.target.value)} />
-      <button onClick={addList}>Add</button>
-      {todo.map((i) => (
-        <p key={i}>{i}</p>
-      ))}
-    </>
-  );
-}
+import UseEffectExample from "./react-class/ch-4/exercise/useEffectFolder/UseEffectExample";
+import UeExample from "./react-class/ch-4/exercise/useEffectFolder/UeExample";
 
 function App() {
   return (
     <>
-      <ToDoList />
+      <UeExample />
     </>
   );
 }
