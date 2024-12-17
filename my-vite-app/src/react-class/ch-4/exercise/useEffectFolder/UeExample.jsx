@@ -9,7 +9,17 @@ api call
     
 */
 }
+{
+  /* 
+  *in line function advantages
+    - know exactly where its used
+    - don't need to think about function name
+    - don't overcomplicate too many functions
+  */
+}
+
 function UeExample() {
+
   const [screenSize, setScreenSize] = useState({
     screenWidth: window.innerWidth,
     screenHeight: window.innerHeight,
@@ -26,7 +36,7 @@ function UeExample() {
         screenHeight: window.innerHeight,
       });
     }
-
+    
     window.addEventListener("resize", screenResize);
     //event remove
     //clean up

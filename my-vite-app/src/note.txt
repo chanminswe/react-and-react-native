@@ -1,28 +1,12 @@
+String
+int
 
-ExampleComponent.jsx
+const [count , setCount] = useState(0);
+const [show , setShow] = useState(false);
 
---this is component 
-function ExampleComponent(){
-    return(
-        <div>
-        something
-        </div>
-    )
-}
-
-export ExampleComponent;
+boolean
+true / false
 
 
-AnotherComponent.jsx
----import
-import ExampleComponent from './ExampleComponent';
-
-function AnotherComponent(){
-    return(
-        <div>
-            <ExampleComponent />
-            <p>Another component</p>
-        </div>
-    )
-}
+setCount(count + 2)
 

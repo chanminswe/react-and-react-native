@@ -25,7 +25,7 @@ function UseEffectExample() {
 
    3.useEffect(() => {
     console.log("Use Effect Rendered");
-  }, [isTrue, count]);
+  }, [ count]);
     */
   }
 
