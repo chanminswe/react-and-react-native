@@ -1,12 +1,55 @@
-String
-int
-
-const [count , setCount] = useState(0);
-const [show , setShow] = useState(false);
-
-boolean
-true / false
 
 
-setCount(count + 2)
+functions
 
+<>
+                            // main context
+export const ScreenContext = createContext();
+
+
+// Provider function
+function ScreenContextProvider({children}){
+    return
+    <ScreenContext.Provider value={{screenSize}}>
+        {children}
+    </ScreenContext.Provider>
+};
+
+
+<ScreenContextProvider>
+    <App />
+</ScreenContextProvider>
+
+
+FrameWork                 Library                    Original
+React Native               React                    JavaScript
+TailwindCss
+Spring                
+
+
+*FrontEnd
+Angular
+React - JavaScript / TypeScript
+Next.js 
+JQuery
+
+Database                            Design
+MongoDb                              Figma
+MySql
+Sqlite (Python)
+
+Deployment
+*AWS
+
+Web                             Software Dev
+*BackEnd                          *BackEnd
+Php                                Spring <---
+Laravel                            Python
+Next.js                            C++ / C#
+Node.js
+
+
+
+
+
+    
