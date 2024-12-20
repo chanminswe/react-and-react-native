@@ -1,0 +1,18 @@
+
+
+state {
+
+    <article>
+        <id>
+        <title>
+        <summary>
+        <display : none>
+    </article>
+
+    // onchange event
+    <title>
+    <summary>
+
+
+
+}
