@@ -4,9 +4,18 @@ function Login() {
   const [showInfo, setShowInfo] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = () => {
-    console.log("name", "email");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!name || !email) {
+      setError("Please fill out the forms");
+      return;
+    }
+
+    setError("");
+    setShowInfo(true);
   };
 
   return (
@@ -26,8 +35,11 @@ function Login() {
           placeholder="email"
         />
         <br />
-        <button type="submit">submit</button>
+        <button type="submit" disabled={!name || !email}>
+          Submit
+        </button>
       </form>
+      {error && <p>{error}!</p>}
 
       {showInfo && (
         <div>

@@ -1,33 +1,41 @@
-import { render , screen } from "@testing-library/react"
-import Login from "./Login"
-import userEvent from "@testing-library/user-event";
+    import { render, screen } from "@testing-library/react";
+    import Login from "./Login";
+    import userEvent from "@testing-library/user-event";
 
-test('UI should have 2 Inputs and 1 Button' , () => {
-    render(<Login />);
+    test('check if button is disabled if the form is empty' , async () => {
+        render(<Login />);
+        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
+    });
 
-    const nameNode = screen.getByPlaceholderText('name');
-    const emailNode = screen.getByPlaceholderText('email');
-    const button = screen.getByRole('button' , {name : /submit/i});
+    test('check if button is disabled if name is empty' , async () => {
+        render(<Login />);
+        
+        const nameInp = screen.getByPlaceholderText(/name/i);
 
-    expect(nameNode).toBeInTheDocument();
-    expect(emailNode).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
-})
+        await userEvent.type(nameInp , "Chan");
+        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
+    });
 
-test('making sure input buttons work' , async () => {
-    render(<Login />);
+    test('check if button is disabled if emai is empty' , async () => {
+        render(<Login />);
+        
+        const emailInp = screen.getByPlaceholderText(/email/i);
 
-    const userInp = screen.getByPlaceholderText('name');
-    const emailInp = screen.getByPlaceholderText('email');
+        await userEvent.type(emailInp , "chanminswe@gmail.com");
+        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
+    });
 
-    await userEvent.type(userInp , "Chan Min");
-    await userEvent.type(emailInp , 'chan@gmail.com');
+    test('to check if button is enabled if the forms are filled' , async() => {
+        render(<Login />);
+        
+        const nameInp = screen.getByPlaceholderText(/name/i);
+        const emailInp = screen.getByPlaceholderText(/email/i);
 
-    expect(userInp).toHaveValue('Chan Min');
-    expect(emailInp).toHaveValue('chan@gmail.com');
-});
+        await userEvent.type(nameInp , 'chanminswe');
+        await userEvent.type(emailInp , 'chan@gmail.com');
 
-test('to make sure submit button worked' , async() => {
+        const submitBtn = screen.getByRole('button' , {name : /submit/i});
+        expect(submitBtn).toBeEnabled();
+    })
 
-});
 
