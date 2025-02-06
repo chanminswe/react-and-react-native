@@ -1,0 +1,6 @@
+"123344" -> onChange
++ -> previous number saved + new Number 
+
+
+
+state change => render();

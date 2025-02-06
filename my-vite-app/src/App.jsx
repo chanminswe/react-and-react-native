@@ -1,14 +1,14 @@
-import React from "react";
-import BookShop from "./react-class/ch-6/ENH/BookShop";
-import MyFeature from "./react-class/ch-6/funcitonalRegractor/MyFeature";
-import ApiExample from "./react-class/api-class/ApiExample";
+import React from 'react';
+import {Container} from '@mui/material';
 
 function App() {
   return (
-    <div>
-      <ApiExample />
-    </div>
-  );
+    <>
+      <Container>
+          Something
+      </Container>
+    </>
+  )
 }
 
-export default App;
+export default App
