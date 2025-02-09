@@ -1,52 +1,37 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Login() {
-  const [showInfo, setShowInfo] = useState(false);
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!name || !email) {
-      setError("Please fill out the forms");
-      return;
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("/api/login", { email, password });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage("Invalid credentials");
     }
-
-    setError("");
-    setShowInfo(true);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="name"
-        />
-        <br />
-        <label>Email</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="email"
-        />
-        <br />
-        <button type="submit" disabled={!name || !email}>
-          Submit
-        </button>
-      </form>
-      {error && <p>{error}!</p>}
-
-      {showInfo && (
-        <div>
-          <p>Name : {name}</p>
-          <p>Email : {email}</p>
-        </div>
-      )}
+      <h2>Login</h2>
+      <input
+        type="email"
+        placeholder="Enter email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Login</button>
+      {message && <p>{message}</p>}
     </div>
   );
 }

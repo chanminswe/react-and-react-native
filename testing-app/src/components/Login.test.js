@@ -1,41 +1,22 @@
-    import { render, screen } from "@testing-library/react";
-    import Login from "./Login";
-    import userEvent from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import axios from "axios";
+import Login from "./Login";
 
-    test('check if button is disabled if the form is empty' , async () => {
-        render(<Login />);
-        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
-    });
+jest.mock("axios");
 
-    test('check if button is disabled if name is empty' , async () => {
-        render(<Login />);
-        
-        const nameInp = screen.getByPlaceholderText(/name/i);
+test("successful login displays success message", async () => {
+  axios.post.mockResolvedValueOnce({ data: { message: "Login successful" } });
 
-        await userEvent.type(nameInp , "Chan");
-        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
-    });
+  render(<Login />);
 
-    test('check if button is disabled if emai is empty' , async () => {
-        render(<Login />);
-        
-        const emailInp = screen.getByPlaceholderText(/email/i);
+  const emailInput = screen.getByPlaceholderText("Enter email");
+  const passwordInput = screen.getByPlaceholderText("Enter password");
+  const loginButton = screen.getByRole("button", { name: /login/i });
 
-        await userEvent.type(emailInp , "chanminswe@gmail.com");
-        expect(screen.getByRole('button' , {name : /submit/i})).toBeDisabled();
-    });
+  await userEvent.type(emailInput, "test@example.com");
+  await userEvent.type(passwordInput, "password123");
+  await userEvent.click(loginButton);
 
-    test('to check if button is enabled if the forms are filled' , async() => {
-        render(<Login />);
-        
-        const nameInp = screen.getByPlaceholderText(/name/i);
-        const emailInp = screen.getByPlaceholderText(/email/i);
-
-        await userEvent.type(nameInp , 'chanminswe');
-        await userEvent.type(emailInp , 'chan@gmail.com');
-
-        const submitBtn = screen.getByRole('button' , {name : /submit/i});
-        expect(submitBtn).toBeEnabled();
-    })
-
-
+  expect(await screen.findByText("Login successful")).toBeInTheDocument();
+});
