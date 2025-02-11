@@ -8,22 +8,6 @@ createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
       <App />
-      <Routes>
-        <Route path="/first" element={<First />} />
-        <Route path="/second" element={<Second />} />
-        <Route path="/third" element={<Third />} />
-      </Routes>
     </StrictMode>
   </BrowserRouter>
 );
-
-function First() {
-  return <div>First</div>;
-}
-
-function Second() {
-  return <div>Second</div>;
-}
-function Third() {
-  return <div>Third</div>;
-}
