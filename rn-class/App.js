@@ -6,6 +6,7 @@ import axios from "axios";
 import CartContextProvider, {
   CartContext,
 } from "./context/CartContextProvider";
+import {items} from './api'
 
 const Item = ({ item }) => {
   const { setAmount } = useContext(CartContext);
@@ -37,8 +38,8 @@ const App = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get("https://fakestoreapi.com/products");
-        setProducts(response.data);
+        // const response = await axios.get("https://fakestoreapi.com/products");
+        setProducts(items);
       } catch (error) {
         console.error("Error Occured While Trying to Get Products ! ", error);
       }
